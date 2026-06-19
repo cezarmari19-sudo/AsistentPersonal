@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Asistent Personal</string>
+
+    <!-- Meds screen -->
+    <string name="meds_title">Medicamente</string>
+    <string name="meds_subtitle">Urmărește ce ai luat azi</string>
+    <string name="meds_taken_progress">%1$d/%2$d luate azi</string>
+    <string name="meds_empty">Niciun medicament adăugat</string>
+    <string name="meds_taken_at">✓ Luat la %1$s</string>
+    <string name="meds_taken_button">Luat</string>
+    <string name="meds_field_name">Medicament</string>
+    <string name="meds_field_dose">Doză (opțional)</string>
+    <string name="meds_field_time_label">Ora de administrare</string>
+    <string name="meds_field_hour">HH</string>
+    <string name="meds_field_minute">MM</string>
+    <string name="meds_add_button">Adaugă</string>
+    <string name="meds_cancel_button">Anulează</string>
+    <string name="meds_new_button">+ Medicament nou</string>
 </resources>
