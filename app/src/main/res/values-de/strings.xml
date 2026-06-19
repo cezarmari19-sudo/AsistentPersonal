@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Persönlicher Assistent</string>
+
+    <!-- Meds screen -->
+    <string name="meds_title">Medikamente</string>
+    <string name="meds_subtitle">Verfolge, was du heute genommen hast</string>
+    <string name="meds_taken_progress">%1$d/%2$d heute genommen</string>
+    <string name="meds_empty">Kein Medikament hinzugefügt</string>
+    <string name="meds_taken_at">✓ Genommen um %1$s</string>
+    <string name="meds_taken_button">Genommen</string>
+    <string name="meds_field_name">Medikament</string>
+    <string name="meds_field_dose">Dosis (optional)</string>
+    <string name="meds_field_time_label">Einnahmezeit</string>
+    <string name="meds_field_hour">SS</string>
+    <string name="meds_field_minute">MM</string>
+    <string name="meds_add_button">Hinzufügen</string>
+    <string name="meds_cancel_button">Abbrechen</string>
+    <string name="meds_new_button">+ Neues Medikament</string>
 </resources>
