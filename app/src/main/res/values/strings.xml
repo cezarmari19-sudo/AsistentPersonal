@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Personal Assistant</string>
+
+    <!-- Meds screen -->
+    <string name="meds_title">Medications</string>
+    <string name="meds_subtitle">Track what you took today</string>
+    <string name="meds_taken_progress">%1$d/%2$d taken today</string>
+    <string name="meds_empty">No medication added</string>
+    <string name="meds_taken_at">✓ Taken at %1$s</string>
+    <string name="meds_taken_button">Taken</string>
+    <string name="meds_field_name">Medication</string>
+    <string name="meds_field_dose">Dose (optional)</string>
+    <string name="meds_field_time_label">Time to take</string>
+    <string name="meds_field_hour">HH</string>
+    <string name="meds_field_minute">MM</string>
+    <string name="meds_add_button">Add</string>
+    <string name="meds_cancel_button">Cancel</string>
+    <string name="meds_new_button">+ New medication</string>
 </resources>
