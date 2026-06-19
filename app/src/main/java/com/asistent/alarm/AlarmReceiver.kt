@@ -8,7 +8,13 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.asistent.AsistentApp
 import com.asistent.MainActivity
-import com.asistent.alarm.AlarmScheduler.Companion.*
+import com.asistent.alarm.AlarmScheduler.Companion.ACTION_MEDICATION
+import com.asistent.alarm.AlarmScheduler.Companion.ACTION_MED_SNOOZE
+import com.asistent.alarm.AlarmScheduler.Companion.ACTION_MED_TAKEN
+import com.asistent.alarm.AlarmScheduler.Companion.ACTION_SUBS_CHECK
+import com.asistent.alarm.AlarmScheduler.Companion.EXTRA_MED_DOSE
+import com.asistent.alarm.AlarmScheduler.Companion.EXTRA_MED_ID
+import com.asistent.alarm.AlarmScheduler.Companion.EXTRA_MED_NAME
 import com.asistent.data.local.entity.daysSinceUsed
 import com.asistent.data.repository.MedicationRepository
 import com.asistent.data.repository.SubscriptionRepository
