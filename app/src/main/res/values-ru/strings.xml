@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Личный ассистент</string>
+    <string name="app_name">Личный помощник</string>
+
+    <!-- Meds screen -->
+    <string name="meds_title">Лекарства</string>
+    <string name="meds_subtitle">Отслеживайте, что вы приняли сегодня</string>
+    <string name="meds_taken_progress">%1$d/%2$d принято сегодня</string>
+    <string name="meds_empty">Лекарства не добавлены</string>
+    <string name="meds_taken_at">✓ Принято в %1$s</string>
+    <string name="meds_taken_button">Принято</string>
+    <string name="meds_field_name">Лекарство</string>
+    <string name="meds_field_dose">Дозировка (необязательно)</string>
+    <string name="meds_field_time_label">Время приёма</string>
+    <string name="meds_field_hour">ЧЧ</string>
+    <string name="meds_field_minute">ММ</string>
+    <string name="meds_add_button">Добавить</string>
+    <string name="meds_cancel_button">Отмена</string>
+    <string name="meds_new_button">+ Новое лекарство</string>
 </resources>
