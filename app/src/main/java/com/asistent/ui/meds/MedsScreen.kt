@@ -7,10 +7,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.asistent.R
 import com.asistent.ui.theme.*
 
 @Composable
@@ -26,19 +28,19 @@ fun MedsScreen(padding: PaddingValues, vm: MedsViewModel = hiltViewModel()) {
 
     Column(Modifier.fillMaxSize().padding(padding).padding(horizontal = 18.dp)) {
         Spacer(Modifier.height(20.dp))
-        Text("Medicamente", style = MaterialTheme.typography.headlineMedium)
-        Text("Urmărește ce ai luat azi", style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 4.dp))
+        Text(stringResource(R.string.meds_title), style = MaterialTheme.typography.headlineMedium)
+        Text(stringResource(R.string.meds_subtitle), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 4.dp))
         if (total > 0) {
             Spacer(Modifier.height(14.dp))
             LinearProgressIndicator(progress = { takenCount.toFloat() / total }, modifier = Modifier.fillMaxWidth(), color = Teal)
-            Text("$takenCount/$total luate azi", fontSize = 11.sp, color = TextSecond,
+            Text(stringResource(R.string.meds_taken_progress, takenCount, total), fontSize = 11.sp, color = TextSecond,
                 modifier = Modifier.align(Alignment.End).padding(top = 4.dp, bottom = 8.dp))
         } else Spacer(Modifier.height(16.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.weight(1f)) {
             if (items.isEmpty()) item {
                 Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) {
-                    Text("Niciun medicament adăugat", color = Border)
+                    Text(stringResource(R.string.meds_empty), color = Border)
                 }
             }
             items(items, key = { it.med.id }) { item ->
@@ -51,11 +53,11 @@ fun MedsScreen(padding: PaddingValues, vm: MedsViewModel = hiltViewModel()) {
                         Column(Modifier.weight(1f)) {
                             Text(item.med.name, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
                             if (item.med.dose.isNotBlank()) Text(item.med.dose, fontSize = 12.sp, color = TextSecond)
-                            if (item.isTakenToday) Text("✓ Luat la ${item.takenAtDisplay}", fontSize = 11.sp, color = Teal)
+                            if (item.isTakenToday) Text(stringResource(R.string.meds_taken_at, item.takenAtDisplay), fontSize = 11.sp, color = Teal)
                         }
                         if (!item.isTakenToday) Button(onClick = { vm.markTaken(item.med.id) },
                             contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)) {
-                            Text("Luat", fontSize = 13.sp)
+                            Text(stringResource(R.string.meds_taken_button), fontSize = 13.sp)
                         }
                         IconButton(onClick = { vm.delete(item.med.id) }) { Text("✕", color = Error) }
                     }
@@ -65,32 +67,32 @@ fun MedsScreen(padding: PaddingValues, vm: MedsViewModel = hiltViewModel()) {
                 Surface(shape = MaterialTheme.shapes.medium, color = SurfaceVar) {
                     Column(Modifier.padding(16.dp)) {
                         OutlinedTextField(value = name, onValueChange = { name = it },
-                            label = { Text("Medicament") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                            label = { Text(stringResource(R.string.meds_field_name)) }, modifier = Modifier.fillMaxWidth(), singleLine = true)
                         Spacer(Modifier.height(8.dp))
                         OutlinedTextField(value = dose, onValueChange = { dose = it },
-                            label = { Text("Doză (opțional)") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                            label = { Text(stringResource(R.string.meds_field_dose)) }, modifier = Modifier.fillMaxWidth(), singleLine = true)
                         Spacer(Modifier.height(8.dp))
-                        Text("Ora de administrare", fontSize = 12.sp, color = TextSecond)
+                        Text(stringResource(R.string.meds_field_time_label), fontSize = 12.sp, color = TextSecond)
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                             OutlinedTextField(value = hour, onValueChange = { if (it.length <= 2) hour = it },
-                                label = { Text("HH") }, modifier = Modifier.weight(1f), singleLine = true)
+                                label = { Text(stringResource(R.string.meds_field_hour)) }, modifier = Modifier.weight(1f), singleLine = true)
                             Text(":", fontSize = 20.sp)
                             OutlinedTextField(value = minute, onValueChange = { if (it.length <= 2) minute = it },
-                                label = { Text("MM") }, modifier = Modifier.weight(1f), singleLine = true)
+                                label = { Text(stringResource(R.string.meds_field_minute)) }, modifier = Modifier.weight(1f), singleLine = true)
                         }
                         Spacer(Modifier.height(10.dp))
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Button(onClick = {
                                 vm.add(name.trim(), dose.trim(), hour.toIntOrNull()?.coerceIn(0,23) ?: 8, minute.toIntOrNull()?.coerceIn(0,59) ?: 0)
                                 name=""; dose=""; hour="08"; minute="00"; showAdd=false
-                            }, modifier = Modifier.weight(1f), enabled = name.isNotBlank()) { Text("Adaugă") }
-                            OutlinedButton(onClick = { showAdd=false }, modifier = Modifier.weight(1f)) { Text("Anulează") }
+                            }, modifier = Modifier.weight(1f), enabled = name.isNotBlank()) { Text(stringResource(R.string.meds_add_button)) }
+                            OutlinedButton(onClick = { showAdd=false }, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.meds_cancel_button)) }
                         }
                     }
                 }
             }
         }
         if (!showAdd) OutlinedButton(onClick = { showAdd = true },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp)) { Text("+ Medicament nou") }
+            modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp)) { Text(stringResource(R.string.meds_new_button)) }
     }
 }
